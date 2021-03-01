@@ -1,8 +1,9 @@
 .newExpense{
+    box-shadow: 0px 0px 26px -17px black;
     height: 60vh;
     width: 30vw;
-    border-radius: 7px;
-    border: 1px solid black;
+    border-radius: 12px;
+    /* border: 1px solid black; */
     margin:0px  30px;
     padding: 5px;
 }
@@ -26,7 +27,7 @@
     width: 50%;
     color: red;
 }
-input{
+input[type=number],input[type=text],button{
     padding: 5px 10px;
     
     width: 80%;
@@ -35,5 +36,20 @@ input{
     outline: none;
     border: 2px solid blue;
     border-radius: 10px;
-    margin: 5px 40px 5px 40px;
+    margin: 10px 40px 10px 40px;
 }
+button{
+    cursor: pointer;
+    background-color: blue;
+    color: white;
+    border: none;
+}
+.options{
+    width: 100%;
+    text-align: center;
+}
+.options input,label{
+    font-size: 1.3em;
+    margin:20px 10px;
+}
+

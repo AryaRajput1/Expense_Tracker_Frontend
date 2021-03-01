@@ -1,7 +1,15 @@
 .display_history{
+    box-shadow: 0px 0px 26px -17px black;
     width: 30vw;
     margin:0px 30px;
 
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    
+}
+.display_history p{
+    text-align: center;
+    font-size: 1.3em;
+    font-weight: bold;
+    margin: 20px auto 0px auto;
     
 }

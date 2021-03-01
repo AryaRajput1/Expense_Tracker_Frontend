@@ -14,12 +14,17 @@ function NewExpense() {
                     <p>2500</p>
                 </div>
             </div>
-            <hr/>
-            <input placeholder='Enter Note' type='text'/>
-<div>
-    {/* checkboxes */}
-</div>
-<input placeholder='Enter Amount' type='number'/>
+            <hr />
+            <input placeholder='Enter Note' type='text' />
+            <div className='options'>
+                {/* checkboxes */}
+
+                <input id='expense' value='expense' type='radio' name='option' /><label for='expense'>Expense</label>
+                <input id='income' value='income' type='radio' name='option' /><label for='income'>Income</label>
+
+            </div>
+            <input placeholder='Enter Amount' type='number' />
+            <button>Add</button>
         </div>
     )
 }
