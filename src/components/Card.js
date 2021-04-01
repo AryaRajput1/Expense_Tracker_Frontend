@@ -5,8 +5,12 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import RemoveIcon from '@material-ui/icons/Remove';
 import AddIcon from '@material-ui/icons/Add';
 import './css/card.css'
+import axios from 'axios';
 
-function Card({ income, note, amount }) {
+function Card({ids, incomeType, note, amount }) {
+    const clickHandler=(e)=>{
+        axios.delete(`http://localhost:3001/data/delOne/${e.currentTarget.name}`);
+    }
     const useStyles = makeStyles((theme) => ({
         white: {
           backgroundColor: '#ffffff',
@@ -20,13 +24,14 @@ function Card({ income, note, amount }) {
                 <ListItem>
                     <ListItemAvatar  >
                         <Avatar   className={classes.white}>
-                            {income ? <AddIcon color='primary' fontSize='large' /> : <RemoveIcon fontSize='large' color='error' />}
+                            {incomeType=='income' ? <AddIcon color='primary' fontSize='large' /> : <RemoveIcon fontSize='large' color='error' />}
                         </Avatar>
                     </ListItemAvatar>
                     <ListItemText primary={note} />
-                    <span>{amount}</span>
+                    <span>{amount} Re.</span>
                     <ListItemIcon >
-                        <IconButton> <DeleteIcon /></IconButton>
+                        
+                        <IconButton  onClick={clickHandler} name={ids}><DeleteIcon  /></IconButton>
                     </ListItemIcon>
                 </ListItem>
 

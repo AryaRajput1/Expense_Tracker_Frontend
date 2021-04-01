@@ -1,30 +1,40 @@
-import React from 'react'
+import axios from 'axios';
+import React,{useState} from 'react'
 import './css/newExpense.css'
 
-function NewExpense() {
+function NewExpense({income,expense}) {
+    const [data, setdata] = useState({'incomeType':'expense'})
+const changeHandler=(e)=>{
+    setdata({...data,[e.target.name]: e.target.value});
+}
+const clickHandler=()=>{
+    if(data.note &&data.money&&data.incomeType)
+     axios.post('http://localhost:3001/data',data)
+    .then(res=>console.log(res));
+}
     return (
         <div className='newExpense'>
             <div className='income-expense'>
                 <div className='income'>
                     <p>Income</p>
-                    <p>5000</p>
+                    <p>{income}</p>
                 </div>
                 <div className='expense'>
                     <p>Expense</p>
-                    <p>2500</p>
+                    <p>{expense}</p>
                 </div>
             </div>
             <hr />
-            <input placeholder='Enter Note' type='text' />
+            <input name='note' onChange={changeHandler} placeholder='Enter Note' type='text' />
             <div className='options'>
                 {/* checkboxes */}
 
-                <input id='expense' value='expense' type='radio' name='option' /><label for='expense'>Expense</label>
-                <input id='income' value='income' type='radio' name='option' /><label for='income'>Income</label>
+                <input onChange={changeHandler} id='expense' value='expense' type='radio' name='incomeType' /><label for='expense' >Expense</label>
+                <input onChange={changeHandler} id='income' value='income' type='radio' name='incomeType' c /><label for='income'>Income</label>
 
             </div>
-            <input placeholder='Enter Amount' type='number' />
-            <button>Add</button>
+            <input onChange={changeHandler} name='money' placeholder='Enter Amount' type='number' />
+            <button onClick={clickHandler}>Add</button>
         </div>
     )
 }

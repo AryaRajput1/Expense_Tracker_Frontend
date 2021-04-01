@@ -1,7 +1,11 @@
 import React from 'react'
 import './css/navbar.css'
+import axios from 'axios';
 
 function Navbar() {
+    const clickHandler=()=>{
+        window.confirm('you want to delete ?') && axios.delete(`http://localhost:3001/data/delMany`);
+    }
     return (
         <div>
             <nav>
@@ -11,7 +15,7 @@ function Navbar() {
                 </div>
                 <div className='link_section'>
                     <p>Home</p>
-                    <p>Clear</p>
+                    <p onClick={clickHandler}>Clear</p>
                     </div>
             </nav>
         </div>
